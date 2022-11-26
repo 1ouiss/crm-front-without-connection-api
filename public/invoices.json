@@ -1,0 +1,32 @@
+[
+    {
+        "id": "1",
+        "status": "send",
+        "amount": 100,
+        "createdAt": "2019-01-01 00:00:00",
+        "customer": [
+            "1"
+        ],
+        "name": "invoice 1"
+    },
+    {
+        "id": "2",
+        "status": "send",
+        "amount": 100,
+        "createdAt": "2019-01-01 00:00:00",
+        "customer": [
+            "1"
+        ],
+        "name": "invoice 2"
+    },
+    {
+        "id": "3",
+        "status": "send",
+        "amount": 100,
+        "createdAt": "2019-01-01 00:00:00",
+        "customer": [
+            "2"
+        ],
+        "name": "invoice 3"
+    }
+]
