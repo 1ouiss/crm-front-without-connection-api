@@ -2,16 +2,14 @@ import { TableRow, TableCell, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-const InvoiceRow = ({invoice}) => {
+const InvoiceRow = ({invoice, handleDelete}) => {
     const [customer, setCustomer] = useState({});
 
     useEffect(() => {
         fetch(`./customers.json`)
         .then((res) => res.json())
         .then((data) => {
-            console.log(data);
             const customer = data.find((customer) => customer.id === invoice.customer[0]);
-            console.log(customer);
             setCustomer(customer);
         });
     }, []);
@@ -38,7 +36,7 @@ const InvoiceRow = ({invoice}) => {
                     <Link to={`/invoices/${invoice.id}`}>
                         <Button variant="contained">Edit</Button>
                     </Link>
-                    <Button variant="contained" color="error">Delete</Button>
+                    <Button variant="contained" color="error" onClick={(e) => handleDelete(e, invoice.id)}>Delete</Button>
                 </TableCell>
             </TableRow>
         </>

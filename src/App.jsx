@@ -4,6 +4,7 @@ import Invoices from './pages/Invoices';
 import Customers from './pages/Customers';
 import UpdateInvoice from './pages/UpdateInvoice';
 import CreateInvoice from './pages/CreateInvoice';
+import InvoiceCustomer from './pages/InvoiceCustomer';
 
 function App() {
   const [customers, setCustomers] = useState([]);
@@ -22,10 +23,11 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Invoices invoices={invoices}/>} />
+          <Route path="/" element={<Invoices invoices={invoices} setInvoices={setInvoices}/>} />
           <Route path="/customers" element={<Customers customers={customers}/>} />
-          <Route path="/invoices/:id" element={<UpdateInvoice invoices={invoices}/>} />
-          <Route path="/newinvoice" element={<CreateInvoice invoices={invoices}/>} />
+          <Route path="/invoices/:id" element={<UpdateInvoice invoices={invoices} setInvoices={setInvoices}/>} />
+          <Route path="/customers/:id" element={<InvoiceCustomer invoices={invoices} customers={customers}/>} />
+          <Route path="/newinvoice" element={<CreateInvoice invoices={invoices} customers={customers} setInvoices={setInvoices}/>} />
           <Route path="*" element={<h1>404</h1>} />
         </Routes>
       </BrowserRouter>

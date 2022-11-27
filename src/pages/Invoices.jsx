@@ -3,13 +3,22 @@ import InvoiceRow from "../components/InvoiceRow";
 // import SearchComponent from "../components/SearchComponent";
 import { Link } from "react-router-dom";
 
-const Invoices = ({invoices}) => {
-    return (
+const Invoices = ({invoices, setInvoices}) => {
+
+  const handleDelete = (e, id) => {
+    e.preventDefault();
+    console.log(id);
+    const newInvoices = invoices.filter((invoice) => invoice.id !== id);
+    console.log(newInvoices);
+    setInvoices(newInvoices);
+  }
+
+  return (
     <>
       <h1>All Invoices</h1>
       <div className="header">
         {/* <SearchComponent dataToSearch={invoices} resultOfSearch={setSearch} setIsSearching={setIsSearching}/> */}
-        <Link to="/createinvoice">
+        <Link to="/newinvoice">
           <Button variant="contained">Create Invoice</Button>
         </Link>
       </div>
@@ -30,7 +39,7 @@ const Invoices = ({invoices}) => {
           </TableHead>
           <TableBody>
             {invoices.map((invoice) => (
-                <InvoiceRow key={invoice.id} invoice={invoice}/>
+                <InvoiceRow key={invoice.id} invoice={invoice} handleDelete={handleDelete}/>
             ))}
             {/* {
                 isSearching ? search.map((invoice, index) => (
@@ -43,7 +52,7 @@ const Invoices = ({invoices}) => {
         </Table>
       </TableContainer>
     </>
-     );
+    );
 }
  
 export default Invoices;
